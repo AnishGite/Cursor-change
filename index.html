@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cursor Shape Changer</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #message {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="message">Your cursor shape will change every second</div>
+
+  <script>
+    const cursorShapes = [
+      'auto', 'default', 'none', 'context-menu', 'help', 'pointer', 'progress', 'wait',
+      'cell', 'crosshair', 'text', 'vertical-text', 'alias', 'copy', 'move', 'no-drop',
+      'not-allowed', 'e-resize', 'n-resize', 'ne-resize', 'nw-resize', 's-resize',
+      'se-resize', 'sw-resize', 'w-resize', 'ew-resize', 'ns-resize', 'nesw-resize',
+      'nwse-resize', 'col-resize', 'row-resize', 'all-scroll', 'zoom-in', 'zoom-out',
+      'grab', 'grabbing'
+    ];
+
+    let cursorSize = 1;
+    let changeCount = 0;
+
+    function changeCursorShape() {
+      const randomIndex = Math.floor(Math.random() * cursorShapes.length);
+      document.body.style.cursor = cursorShapes[randomIndex];
+      
+      changeCount++;
+      if (changeCount % 5 === 0) {
+        cursorSize++;
+        document.body.style.cursor = `${cursorSize}x ${cursorShapes[randomIndex]}`;
+      }
+    }
+
+    setInterval(changeCursorShape, 1000);
+  </script>
+</body>
+</html>
